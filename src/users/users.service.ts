@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { HttpStatus } from '@nestjs/common/enums';
 import { HttpException, UnauthorizedException } from '@nestjs/common/exceptions';
 import { InjectModel } from '@nestjs/sequelize';
-import { getTokens } from 'src/helpers';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './schemas/user.model';
@@ -88,7 +87,7 @@ export class UsersService {
         HttpStatus.FORBIDDEN
       )
     }
-    const tokens = await getTokens(user.id,true,user.is_admin,user.is_creator)
+    const tokens = await this.getTokens(user.id,true,user.is_admin,user.is_creator)
     const hashed_refresh_token = await bcrypt.hash(tokens.refresh_token,7)
     user.hashed_refresh_token = hashed_refresh_token
     user.save()

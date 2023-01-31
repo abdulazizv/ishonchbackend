@@ -17,6 +17,7 @@ export class userGuard implements CanActivate {
                     message:"Xatolik ! Not_authorized"
                 })
             } 
+            console.log(userHeader)
             const bearer = userHeader.split(' ')[0]
             const token = userHeader.split(' ')[1];
             if(bearer !== 'Bearer' || !token){
@@ -39,10 +40,10 @@ export class userGuard implements CanActivate {
         }
             return true
         } catch (error) {
-            console.log(error)
+            console.log(error.message)
             throw new HttpException(
-                "Nazarda tutilmagan notAuthorized",
-                HttpStatus.CONFLICT
+                `${error.message}`,
+                error.status
             )
         }
     }

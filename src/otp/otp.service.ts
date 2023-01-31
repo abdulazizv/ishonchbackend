@@ -10,7 +10,6 @@ import { VerifyOtpDto } from './dto/verifyotp.dto';
 import { UsersService } from 'src/users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcryptjs'
-import { getTokens } from 'src/helpers';
 import { JwtPayload, Tokens } from 'src/types';
 import { newOtpDto } from './dto/newotp.dto';
 
@@ -52,7 +51,7 @@ export class OtpService {
     } else if(d1 >= otpData.expiration_time){
       throw new HttpException(
         "Time expired",
-        HttpStatus.NOT_FOUND
+        HttpStatus.CONFLICT
       )
     }
     else {
@@ -69,14 +68,12 @@ export class OtpService {
       success:true,
       tokens
     }
-    
   }
 
 
   async newOtp(newotpDto:newOtpDto){
     const numPhone = newotpDto.phone_number
     const check = await this.userService.findbyNumber(numPhone)
-    console.log(check)
     if(check){
       throw new BadRequestException({
         message:"Phone number already existed"

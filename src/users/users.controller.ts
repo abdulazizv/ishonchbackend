@@ -12,7 +12,7 @@ import {
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { User } from './schemas/user.model';
 import { userGuard } from 'src/guards/user.guard';
 import { adminGuard } from 'src/guards/admin.guard';
@@ -23,67 +23,76 @@ import { isCreatorOrAdminGuard } from 'src/guards/iscreatororadmin.guard';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @ApiOperation({summary:"Userlarni qo'shish"})
-  @ApiResponse({status:201,type:User})
+  @ApiOperation({ summary: "Userlarni qo'shish" })
+  @ApiResponse({ status: 201, type: User })
+  @ApiBearerAuth()
   @UseGuards(userGuard)
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
   }
 
-  @ApiOperation({summary:'Tokenni yangilash'})
-  @ApiResponse({status:200})
+  @ApiOperation({ summary: 'Tokenni yangilash' })
+  @ApiResponse({ status: 200 })
+  @ApiBearerAuth()
   @Post('refreshToken/:id')
-  refreshtoken(@Param('id') id:number ){
-    return this.usersService.refreshtoken(+id)
+  refreshtoken(@Param('id') id: number) {
+    return this.usersService.refreshtoken(+id);
   }
 
-  @ApiOperation({summary:'Userning logout qilishi'})
-  @ApiResponse({status:200})
+  @ApiOperation({ summary: 'Userning logout qilishi' })
+  @ApiResponse({ status: 200 })
+  @ApiBearerAuth()
   @Post('user/logout/:id')
-  logout(@Param('id') id:number){
-    return this.usersService.logout(+id)
+  logout(@Param('id') id: number) {
+    return this.usersService.logout(+id);
   }
-  @ApiOperation({summary:"Userlarni olish"})
-  @ApiResponse({status:200,type:[User]})
+  @ApiOperation({ summary: 'Userlarni olish' })
+  @ApiResponse({ status: 200, type: [User] })
+  @ApiBearerAuth()
   @UseGuards(adminGuard)
   @Get()
   findAll() {
     return this.usersService.findAll();
   }
 
-  @ApiOperation({summary:"Userni olish"})
-  @ApiResponse({status:200,type:User})
+  @ApiOperation({ summary: 'Userni olish' })
+  @ApiResponse({ status: 200, type: User })
+  @ApiBearerAuth()
   @UseGuards(userParamGuard)
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.usersService.findOne(+id);
   }
 
-  @ApiOperation({summary:"Userni yangilash"})
-  @ApiResponse({status:200,type:User})
+  @ApiOperation({ summary: 'Userni yangilash' })
+  @ApiResponse({ status: 200, type: User })
+  @ApiBearerAuth()
   @UseGuards(userParamGuard)
   @Put(':id')
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.usersService.update(+id, updateUserDto);
   }
 
-  @ApiOperation({summary:"Userni adminlikdan olish"})
-  @ApiResponse({status:200,type:Boolean})
+  @ApiOperation({ summary: 'Userni adminlikdan olish' })
+  @ApiResponse({ status: 200, type: Boolean })
+  @ApiBearerAuth()
   @UseGuards(isCreatorOrAdminGuard)
   @Delete('admin/:id')
-  unAdmin(@Param('id') id:number){
-    return this.usersService
+  unAdmin(@Param('id') id: number) {
+    return this.usersService;
   }
-  @ApiOperation({summary:"Userni admin qilish"})
-  @ApiResponse({status:200,type:Boolean})
+  @ApiOperation({ summary: 'Userni admin qilish' })
+  @ApiResponse({ status: 200, type: Boolean })
+  @ApiBearerAuth()
   @UseGuards(isCreatorOrAdminGuard)
   @Put('admin/:id')
-  doAdmin(@Param('id') id:number){
-    return this.usersService.doAdmin(+id)
+  doAdmin(@Param('id') id: number) {
+    return this.usersService.doAdmin(+id);
   }
-  @ApiOperation({summary:"Userni o'chirish"})
-  @ApiResponse({status:202,type:User})
+  @ApiOperation({ summary: "Userni o'chirish" })
+  @ApiResponse({ status: 202, type: User })
+  @ApiBearerAuth()
   @UseGuards(adminGuard)
   @Delete(':id')
   remove(@Param('id') id: string) {

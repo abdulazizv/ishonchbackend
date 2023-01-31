@@ -37,7 +37,6 @@ import { Notebook } from './notebook_characteristics/schemas/notebook.model';
 import { FilesModule } from './files/files.module';
 import { OtpModule } from './otp/otp.module';
 import { Otp } from './otp/schemas/otp.model';
-import { LlModule } from './ll/ll.module';
 
 @Module({
   imports: [
@@ -94,7 +93,6 @@ import { LlModule } from './ll/ll.module';
     NotebookCharacteristicsModule,
     FilesModule,
     OtpModule,
-    LlModule,
   ],
   controllers: [AppController],
   providers: [AppService],

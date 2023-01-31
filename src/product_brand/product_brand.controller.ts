@@ -11,36 +11,40 @@ import {
 import { ProductBrandService } from './product_brand.service';
 import { CreateProductBrandDto } from './dto/create-product_brand.dto';
 import { UpdateProductBrandDto } from './dto/update-product_brand.dto';
-import { ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { ProductBrand } from './schemas/product_brand.model';
 
 @Controller('product-brand')
 export class ProductBrandController {
   constructor(private readonly productBrandService: ProductBrandService) {}
 
-  @ApiOperation({summary:"Product_brand qo'shish"})
-  @ApiResponse({status:201,type:ProductBrand})
+  @ApiOperation({ summary: "Product_brand qo'shish" })
+  @ApiResponse({ status: 201, type: ProductBrand })
+  @ApiBearerAuth()
   @Post()
   create(@Body() createProductBrandDto: CreateProductBrandDto) {
     return this.productBrandService.create(createProductBrandDto);
   }
 
-  @ApiOperation({summary:"Product_brand olish"})
-  @ApiResponse({status:200,type:[ProductBrand]})
+  @ApiOperation({ summary: 'Product_brand olish' })
+  @ApiResponse({ status: 200, type: [ProductBrand] })
+  @ApiBearerAuth()
   @Get()
   findAll() {
     return this.productBrandService.findAll();
   }
 
-  @ApiOperation({summary:"Product_brandni olish"})
-  @ApiResponse({status:200,type:ProductBrand})
+  @ApiOperation({ summary: 'Product_brandni olish' })
+  @ApiResponse({ status: 200, type: ProductBrand })
+  @ApiBearerAuth()
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.productBrandService.findOne(+id);
   }
 
-  @ApiOperation({summary:"Product_brandni yangilash"})
-  @ApiResponse({status:200,type:ProductBrand})
+  @ApiOperation({ summary: 'Product_brandni yangilash' })
+  @ApiResponse({ status: 200, type: ProductBrand })
+  @ApiBearerAuth()
   @Put(':id')
   update(
     @Param('id') id: string,
@@ -49,8 +53,9 @@ export class ProductBrandController {
     return this.productBrandService.update(+id, updateProductBrandDto);
   }
 
-  @ApiOperation({summary:"Product_brandni o'chirish"})
-  @ApiResponse({status:202,type:Number})
+  @ApiOperation({ summary: "Product_brandni o'chirish" })
+  @ApiResponse({ status: 202, type: Number })
+  @ApiBearerAuth()
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.productBrandService.remove(+id);
