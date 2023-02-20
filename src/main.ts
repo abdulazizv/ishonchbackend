@@ -6,7 +6,7 @@ import {ValidationPipe} from '@nestjs/common'
 const PORT = process.env.PORT || 8080
 async function start() {
   try {
-    const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule);
   const config = new DocumentBuilder()
   .addBearerAuth()
   .setTitle('Ishonch571 market')

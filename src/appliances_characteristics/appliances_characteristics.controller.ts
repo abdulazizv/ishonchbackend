@@ -9,7 +9,7 @@ import {
   Put,
   UseInterceptors,
   UploadedFile,
-  UseGuards
+  UseGuards,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { ApiBearerAuth, ApiOperation, ApiResponse } from '@nestjs/swagger';
@@ -35,10 +35,11 @@ export class AppliancesCharacteristicsController {
   create(
     @Body()
     createAppliancesCharacteristicDto: CreateAppliancesCharacteristicDto,
-    @UploadedFile() image:string
+    @UploadedFile() image: string,
   ) {
     return this.appliancesCharacteristicsService.create(
-      createAppliancesCharacteristicDto,image
+      createAppliancesCharacteristicDto,
+      image,
     );
   }
 
@@ -76,8 +77,8 @@ export class AppliancesCharacteristicsController {
     );
   }
 
-  @ApiOperation({summary:"Appliances_characterics o'chirish"})
-  @ApiResponse({status:202,type:Number})
+  @ApiOperation({ summary: "Appliances_characterics o'chirish" })
+  @ApiResponse({ status: 202, type: Number })
   @ApiBearerAuth()
   @UseGuards(adminGuard)
   @Delete(':id')

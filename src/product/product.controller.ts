@@ -12,7 +12,7 @@ import { ProductService } from './product.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { ApiBearerAuth, ApiOperation, ApiResponse } from "@nestjs/swagger";
-import { Product } from './schemas/product.model';
+import { Product } from './models/product.model';
 
 @Controller('product')
 export class ProductController {

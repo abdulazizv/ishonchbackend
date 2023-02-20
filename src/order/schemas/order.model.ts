@@ -1,7 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { Column,DataType,Model,Table,HasMany,BelongsTo, ForeignKey } from "sequelize-typescript";
 import { Discount } from "src/discount/schemas/discount.model";
-import { Product } from "src/product/schemas/product.model";
+import { Product } from "src/product/models/product.model";
 import { User } from "src/users/schemas/user.model";
 
 @Table({tableName:'orders'})

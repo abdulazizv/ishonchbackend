@@ -2,7 +2,7 @@ import { ApiProperty } from "@nestjs/swagger";
 import { DataType,Column,Table,Model,HasMany,BelongsTo, ForeignKey } from "sequelize-typescript";
 import { Discount } from "src/discount/schemas/discount.model";
 import { Media } from "src/media/schemas/media.model";
-import { Product } from "src/product/schemas/product.model";
+import { Product } from "src/product/models/product.model";
 
 @Table({tableName:'notebook-characterics'})
 

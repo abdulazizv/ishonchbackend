@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger'
 import {DataType,HasMany,Table,Model,Column} from 'sequelize-typescript'
 import { Discount } from 'src/discount/schemas/discount.model';
-import { Product } from 'src/product/schemas/product.model';
+import { Product } from 'src/product/models/product.model';
 
 
 @Table({tableName:'currencies'})

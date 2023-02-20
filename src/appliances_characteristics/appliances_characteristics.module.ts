@@ -4,7 +4,6 @@ import { AppliancesCharacteristicsController } from './appliances_characteristic
 import { SequelizeModule } from '@nestjs/sequelize';
 import { Appliances } from './schemas/appliancesCharacteric.model';
 import { FilesModule } from 'src/files/files.module';
-import { MediaService } from 'src/media/media.service';
 import { MediaModule } from 'src/media/media.module';
 import { JwtModule } from '@nestjs/jwt';
 

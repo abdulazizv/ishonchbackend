@@ -1,6 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 import {Column,DataType,Model,Table,HasMany, ForeignKey, BelongsTo} from 'sequelize-typescript'
-import { Product } from "src/product/schemas/product.model";
+import { Product } from "src/product/models/product.model";
 
 @Table({tableName:'search-history'})
 

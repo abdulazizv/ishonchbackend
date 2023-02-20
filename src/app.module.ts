@@ -8,21 +8,17 @@ import { InjectModel, SequelizeModule } from '@nestjs/sequelize';
 import { CategoryModule } from './category/category.module';
 import { Category } from './category/schema/category.model';
 import { ProductModule } from './product/product.module';
-import { Product } from './product/schemas/product.model';
+import { Product } from './product/models/product.model';
 import { UsersModule } from './users/users.module';
 import { User } from './users/schemas/user.model';
 import { CurrencyModule } from './currency/currency.module';
-import { StatusModule } from './status/status.module';
 import { PriceYearModule } from './price_year/price_year.module';
 import { DescriptionModule } from './description/description.module';
-import { ProductBrandModule } from './product_brand/product_brand.module';
 import { MediaModule } from './media/media.module';
 import { Currency } from './currency/schemas/currency.model';
 import { Description } from './description/schemas/description.model';
 import { Media } from './media/schemas/media.model';
 import { priceYear } from './price_year/schemas/price_year.model';
-import { ProductBrand } from './product_brand/schemas/product_brand.model';
-import { Status } from './status/schemas/status.model';
 import { DiscountModule } from './discount/discount.module';
 import { OrderModule } from './order/order.module';
 import { Order } from './order/schemas/order.model';
@@ -62,8 +58,6 @@ import { Otp } from './otp/schemas/otp.model';
           Description,
           Media,
           priceYear,
-          ProductBrand,
-          Status,
           Order,
           Discount,
           Appliances,
@@ -80,10 +74,8 @@ import { Otp } from './otp/schemas/otp.model';
     ProductModule,
     UsersModule,
     CurrencyModule,
-    StatusModule,
     PriceYearModule,
     DescriptionModule,
-    ProductBrandModule,
     MediaModule,
     DiscountModule,
     OrderModule,

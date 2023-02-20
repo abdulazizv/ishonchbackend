@@ -1,6 +1,6 @@
 import {BelongsTo,Column,DataType,ForeignKey,HasMany,Model,Table} from  'sequelize-typescript'
 import { ApiProperty } from '@nestjs/swagger'
-import { Product } from 'src/product/schemas/product.model';
+import { Product } from 'src/product/models/product.model';
 import { Discount } from 'src/discount/schemas/discount.model';
 
 @Table({tableName:'category'})

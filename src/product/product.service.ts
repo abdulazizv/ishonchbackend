@@ -2,7 +2,7 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
-import { Product } from './schemas/product.model';
+import { Product } from './models/product.model';
 
 @Injectable()
 export class ProductService {
@@ -26,7 +26,7 @@ export class ProductService {
       include: { all: true },
     });
     if (allProduct.length < 1) {
-      throw new HttpException('Product is not found', HttpStatus.BAD_GATEWAY);
+      throw new HttpException('Product is not found', HttpStatus.NOT_FOUND);
     }
     return allProduct;
   }

@@ -3,7 +3,7 @@ import { ProductService } from './product.service';
 import { ProductController } from './product.controller';
 import { ConfigModule } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { Product } from './schemas/product.model';
+import { Product } from './models/product.model';
 import { JwtModule } from '@nestjs/jwt';
 
 @Module({
