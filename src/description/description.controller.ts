@@ -17,7 +17,7 @@ import { CreateDescriptionDto } from './dto/create-description.dto';
 import { UpdateDescriptionDto } from './dto/update-description.dto';
 import { Description } from './schemas/description.model';
 
-@Controller('description')
+@Controller('api/v2/description')
 export class DescriptionController {
   constructor(private readonly descriptionService: DescriptionService) {}
 

@@ -16,7 +16,7 @@ import { ApiBearerAuth, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { Otp } from './schemas/otp.model';
 import { Tokens } from '../types';
 
-@Controller('otp')
+@Controller('api/v2/otp')
 export class OtpController {
   constructor(private readonly otpService: OtpService) {}
 

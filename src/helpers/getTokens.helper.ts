@@ -1,5 +1,9 @@
 import { JwtPayload, Tokens } from '../types';
-
+import { JwtService } from '@nestjs/jwt';
+const jwtService = new JwtService({
+  secret: 'my-secret-key',
+  signOptions: { expiresIn: '15d' },
+});
 export async function getTokens(
   userId: number,
   is_active: boolean,
@@ -13,11 +17,11 @@ export async function getTokens(
     is_creator: is_creator,
   };
   const [accessToken, refreshToken] = await Promise.all([
-    this.jwtService.signAsync(jwtPayload, {
+    jwtService.signAsync(jwtPayload, {
       secret: process.env.ACCESS_TOKEN_KEY,
       expiresIn: process.env.ACCESS_TOKEN_TIME,
     }),
-    this.jwtService.signAsync(jwtPayload, {
+    jwtService.signAsync(jwtPayload, {
       secret: process.env.REFRESH_TOKEN_KEY,
       expiresIn: process.env.REFRESH_TOKEN_TIME,
     }),

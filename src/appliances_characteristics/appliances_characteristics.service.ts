@@ -27,7 +27,7 @@ export class AppliancesCharacteristicsService {
         'Error has been detected during save information',
         HttpStatus.BAD_REQUEST,
       );
-    }
+    };
     const newMedia = await this.mediaService.create({
       media: fileName,
       target_table_id: newAppliances.id,

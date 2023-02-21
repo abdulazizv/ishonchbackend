@@ -22,7 +22,7 @@ import { CreateAppliancesCharacteristicDto } from './dto/create-appliances_chara
 import { UpdateAppliancesCharacteristicDto } from './dto/update-appliances_characteristic.dto';
 import { Appliances } from './schemas/appliancesCharacteric.model';
 
-@Controller('appliances-characteristics')
+@Controller('api/v2/appliances-characteristics')
 export class AppliancesCharacteristicsController {
   constructor(
     private readonly appliancesCharacteristicsService: AppliancesCharacteristicsService,

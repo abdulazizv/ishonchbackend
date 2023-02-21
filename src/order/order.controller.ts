@@ -16,7 +16,7 @@ import { ApiBearerAuth, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { Order } from './schemas/order.model';
 import { adminGuard } from 'src/guards/admin.guard';
 
-@Controller('order')
+@Controller('api/v2/order')
 export class OrderController {
   constructor(private readonly orderService: OrderService) {}
 

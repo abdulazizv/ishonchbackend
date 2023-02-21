@@ -16,7 +16,7 @@ import { CreateDiscountDto } from './dto/create-discount.dto';
 import { UpdateDiscountDto } from './dto/update-discount.dto';
 import { Discount } from './schemas/discount.model';
 
-@Controller('discount')
+@Controller('api/v2/discount')
 export class DiscountController {
   constructor(private readonly discountService: DiscountService) {}
 

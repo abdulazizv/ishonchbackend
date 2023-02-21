@@ -19,7 +19,7 @@ import { Notebook } from './schemas/notebook.model';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { adminGuard } from 'src/guards/admin.guard';
 
-@Controller('notebook-characteristics')
+@Controller('api/v2/notebook-characteristics')
 export class NotebookCharacteristicsController {
   constructor(
     private readonly notebookCharacteristicsService: NotebookCharacteristicsService,

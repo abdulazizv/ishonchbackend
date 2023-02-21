@@ -19,7 +19,7 @@ import { adminGuard } from 'src/guards/admin.guard';
 import { userParamGuard } from 'src/guards/userParam.guard';
 import { isCreatorOrAdminGuard } from 'src/guards/iscreatororadmin.guard';
 
-@Controller('users')
+@Controller('api/v2/users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 

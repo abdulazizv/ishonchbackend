@@ -16,7 +16,7 @@ import { CreateCurrencyDto } from './dto/create-currency.dto';
 import { UpdateCurrencyDto } from './dto/update-currency.dto';
 import { Currency } from './schemas/currency.model';
 
-@Controller('currency')
+@Controller('api/v2/currency')
 export class CurrencyController {
   constructor(private readonly currencyService: CurrencyService) {}
 

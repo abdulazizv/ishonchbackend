@@ -17,7 +17,7 @@ import { ApiBearerAuth, ApiOperation, ApiResponse } from "@nestjs/swagger";
 import { FileInterceptor } from '@nestjs/platform-express';
 import { Phone } from './schemas/phone.model';
 
-@Controller('phone-characteristics')
+@Controller('api/v2/phone-characteristics')
 export class PhoneCharacteristicsController {
   constructor(
     private readonly phoneCharacteristicsService: PhoneCharacteristicsService,

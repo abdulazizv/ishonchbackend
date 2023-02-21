@@ -14,7 +14,7 @@ import { UpdateMediaDto } from './dto/update-media.dto';
 import {ApiBearerAuth, ApiOperation, ApiResponse} from '@nestjs/swagger';
 import { Media } from './schemas/media.model';
 
-@Controller('media')
+@Controller('api/v2/media')
 export class MediaController {
   constructor(private readonly mediaService: MediaService) {}
 

@@ -64,7 +64,7 @@ export class AdminController {
   @ApiOperation({ summary: 'Sign in for admin' })
   @ApiResponse({ status: 200, type: Object })
   @Post('signup')
-  signin(@Body() signinDto: SignInDto) {
-    return this.adminService.signIn(signinDto);
+  signIn(@Body() signInDto: SignInDto) {
+    return this.adminService.signIn(signInDto);
   }
 }

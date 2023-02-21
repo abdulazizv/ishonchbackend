@@ -14,7 +14,7 @@ import { UpdatePriceYearDto } from './dto/update-price_year.dto';
 import { ApiBearerAuth, ApiOperation, ApiResponse } from "@nestjs/swagger";
 import { priceYear } from './schemas/price_year.model';
 
-@Controller('price-year')
+@Controller('api/v2/price-year')
 export class PriceYearController {
   constructor(private readonly priceYearService: PriceYearService) {}
 

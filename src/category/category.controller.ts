@@ -20,7 +20,7 @@ import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
 import { Category } from './schema/category.model';
 
-@Controller('category')
+@Controller('api/v2/category')
 export class CategoryController {
   constructor(private readonly categoryService: CategoryService) {}
 

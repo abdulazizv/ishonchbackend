@@ -23,7 +23,6 @@ import { DiscountModule } from './discount/discount.module';
 import { OrderModule } from './order/order.module';
 import { Order } from './order/schemas/order.model';
 import { Discount } from './discount/schemas/discount.model';
-import { SearchHistoryModule } from './search_history/search_history.module';
 import { AppliancesCharacteristicsModule } from './appliances_characteristics/appliances_characteristics.module';
 import { PhoneCharacteristicsModule } from './phone_characteristics/phone_characteristics.module';
 import { NotebookCharacteristicsModule } from './notebook_characteristics/notebook_characteristics.module';
@@ -34,6 +33,7 @@ import { FilesModule } from './files/files.module';
 import { OtpModule } from './otp/otp.module';
 import { Otp } from './otp/schemas/otp.model';
 import { AdminModule } from './admin/admin.module';
+import { Admin } from './admin/models/admin.model';
 
 @Module({
   imports: [
@@ -65,6 +65,7 @@ import { AdminModule } from './admin/admin.module';
           Phone,
           Notebook,
           Otp,
+          Admin,
         ],
         synchronize: true,
         autoLoadModels: true,
@@ -80,7 +81,6 @@ import { AdminModule } from './admin/admin.module';
     MediaModule,
     DiscountModule,
     OrderModule,
-    SearchHistoryModule,
     AppliancesCharacteristicsModule,
     PhoneCharacteristicsModule,
     NotebookCharacteristicsModule,
