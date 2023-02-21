@@ -33,6 +33,7 @@ import { Notebook } from './notebook_characteristics/schemas/notebook.model';
 import { FilesModule } from './files/files.module';
 import { OtpModule } from './otp/otp.module';
 import { Otp } from './otp/schemas/otp.model';
+import { AdminModule } from './admin/admin.module';
 
 @Module({
   imports: [
@@ -85,6 +86,7 @@ import { Otp } from './otp/schemas/otp.model';
     NotebookCharacteristicsModule,
     FilesModule,
     OtpModule,
+    AdminModule,
   ],
   controllers: [AppController],
   providers: [AppService],
