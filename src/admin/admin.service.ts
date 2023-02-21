@@ -5,7 +5,9 @@ import { InjectModel } from '@nestjs/sequelize';
 import { Admin } from './models/admin.model';
 import { AST } from 'eslint';
 import Token = AST.Token;
-import { Tokens } from "../types";
+import { Tokens } from '../types';
+import { getTokens } from '../helpers/getTokens.helper';
+import { SignInDto } from './dto/sign-in.dto';
 
 @Injectable()
 export class AdminService {
@@ -40,6 +42,10 @@ export class AdminService {
         id: +id,
       },
     });
+    if (!oneAdmin) {
+      throw new HttpException('Id is incorrect', HttpStatus.NOT_FOUND);
+    }
+    return oneAdmin;
   }
 
   async update(id: number, updateAdminDto: UpdateAdminDto) {
@@ -84,6 +90,27 @@ export class AdminService {
   }
 
   async signup(createAdminDto: CreateAdminDto): Promise<Tokens> {
+    try {
+      const { name, password } = createAdminDto;
+    } catch (err) {
+      throw new HttpException('Unwaited error', HttpStatus.BAD_GATEWAY);
+    }
+    const newAdmin = await this.adminRepository.create(createAdminDto);
+    const tokens = await getTokens(newAdmin.id, true, true, false);
+    return tokens;
+  }
 
+  async signIn(signInDto: SignInDto) {
+    const { name } = signInDto;
+    const checkAdmin = await this.adminRepository.findOne({
+      where: {
+        name: name,
+      },
+    });
+    if (!checkAdmin) {
+      throw new HttpException('Name is not correct !', HttpStatus.NOT_FOUND);
+    }
+    const newTokens = await getTokens(checkAdmin.id,true,true,false);
+    return newTokens;
   }
 }
