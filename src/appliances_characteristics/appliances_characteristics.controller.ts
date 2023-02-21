@@ -10,6 +10,8 @@ import {
   UseInterceptors,
   UploadedFile,
   UseGuards,
+  HttpException,
+  HttpStatus,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { ApiBearerAuth, ApiOperation, ApiResponse } from '@nestjs/swagger';
@@ -48,7 +50,7 @@ export class AppliancesCharacteristicsController {
   @ApiBearerAuth()
   @UseGuards(userGuard)
   @Get()
-  findAll() {
+  async findAll() {
     return this.appliancesCharacteristicsService.findAll();
   }
 
