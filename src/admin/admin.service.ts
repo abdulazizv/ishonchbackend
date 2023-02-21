@@ -3,6 +3,9 @@ import { CreateAdminDto } from './dto/create-admin.dto';
 import { UpdateAdminDto } from './dto/update-admin.dto';
 import { InjectModel } from '@nestjs/sequelize';
 import { Admin } from './models/admin.model';
+import { AST } from 'eslint';
+import Token = AST.Token;
+import { Tokens } from "../types";
 
 @Injectable()
 export class AdminService {
@@ -78,5 +81,9 @@ export class AdminService {
       },
     });
     return true;
+  }
+
+  async signup(createAdminDto: CreateAdminDto): Promise<Tokens> {
+
   }
 }
