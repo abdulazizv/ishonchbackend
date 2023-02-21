@@ -39,11 +39,44 @@ export class AdminService {
     });
   }
 
-  update(id: number, updateAdminDto: UpdateAdminDto) {
-    return `This action updates a #${id} admin`;
+  async update(id: number, updateAdminDto: UpdateAdminDto) {
+    const check = await this.adminRepository.findOne({
+      where: {
+        id: +id,
+      },
+    });
+    if (!check) {
+      throw new HttpException(
+        'Not updated! Id is incorrect',
+        HttpStatus.NOT_FOUND,
+      );
+    }
+    return await this.adminRepository.update(
+      {
+        ...updateAdminDto,
+      },
+      {
+        where: {
+          id: +id,
+        },
+      },
+    );
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} admin`;
+  async remove(id: number) {
+    const check = await this.adminRepository.findOne({
+      where: {
+        id: +id,
+      },
+    });
+    if (!check) {
+      throw new HttpException('Id is incorrect', HttpStatus.NOT_FOUND);
+    }
+    await this.adminRepository.findOne({
+      where: {
+        id: +id,
+      },
+    });
+    return true;
   }
 }
