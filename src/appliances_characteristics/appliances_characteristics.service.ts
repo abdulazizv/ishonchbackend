@@ -21,13 +21,16 @@ export class AppliancesCharacteristicsService {
     const fileName = await this.fileService.createFile(image);
     const newAppliances = await this.appliancesRepository.create(
       createAppliancesCharacteristicDto,
+      {
+        include: { all: true },
+      },
     );
     if (!newAppliances) {
       throw new HttpException(
         'Error has been detected during save information',
         HttpStatus.BAD_REQUEST,
       );
-    };
+    }
     const newMedia = await this.mediaService.create({
       media: fileName,
       target_table_id: newAppliances.id,

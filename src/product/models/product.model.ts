@@ -12,7 +12,6 @@ import { ApiProperty } from '@nestjs/swagger';
 import { Category } from 'src/category/schema/category.model';
 import { Currency } from 'src/currency/schemas/currency.model';
 import { priceYear } from 'src/price_year/schemas/price_year.model';
-import { Description } from 'src/description/schemas/description.model';
 import { Media } from 'src/media/schemas/media.model';
 import { Order } from 'src/order/schemas/order.model';
 import { Appliances } from 'src/appliances_characteristics/schemas/appliancesCharacteric.model';
@@ -95,14 +94,11 @@ export class Product extends Model<Product> {
   @BelongsTo(() => priceYear)
   priceYear: priceYear;
 
-  @ForeignKey(() => Description)
   @Column({
-    type: DataType.INTEGER,
+    type: DataType.STRING,
   })
-  description_id: number;
+  description: string;
 
-  @BelongsTo(() => Description)
-  description: Description;
 
   @ForeignKey(() => Category)
   @Column({

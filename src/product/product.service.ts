@@ -11,7 +11,9 @@ export class ProductService {
   ) {}
 
   async create(createProductDto: CreateProductDto): Promise<Product> {
-    const newProduct = await this.productRepository.create(createProductDto);
+    const newProduct = await this.productRepository.create(createProductDto, {
+      include: { all: true },
+    });
     if (!newProduct) {
       throw new HttpException(
         'Error detected during save information',
@@ -32,7 +34,9 @@ export class ProductService {
   }
 
   async findOne(id: number): Promise<Product> {
-    const oneProduct = await this.productRepository.findByPk(id);
+    const oneProduct = await this.productRepository.findByPk(id, {
+      include: { all: true },
+    });
     if (!oneProduct) {
       throw new HttpException(
         'Id is incorrect, Information not found',

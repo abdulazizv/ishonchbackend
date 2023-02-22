@@ -28,8 +28,8 @@ export class UpdateProductDto extends PartialType(CreateProductDto) {
     @IsNumber()
     readonly product_year_price:number;
     @IsOptional()
-    @IsNumber()
-    readonly description_id:number;
+    @IsString()
+    readonly description:string;
     @IsOptional()
     @IsNumber()
     readonly category_id:number;

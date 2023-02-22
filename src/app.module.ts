@@ -13,10 +13,8 @@ import { UsersModule } from './users/users.module';
 import { User } from './users/schemas/user.model';
 import { CurrencyModule } from './currency/currency.module';
 import { PriceYearModule } from './price_year/price_year.module';
-import { DescriptionModule } from './description/description.module';
 import { MediaModule } from './media/media.module';
 import { Currency } from './currency/schemas/currency.model';
-import { Description } from './description/schemas/description.model';
 import { Media } from './media/schemas/media.model';
 import { priceYear } from './price_year/schemas/price_year.model';
 import { DiscountModule } from './discount/discount.module';
@@ -56,7 +54,6 @@ import { Admin } from './admin/models/admin.model';
           Product,
           User,
           Currency,
-          Description,
           Media,
           priceYear,
           Order,
@@ -77,7 +74,6 @@ import { Admin } from './admin/models/admin.model';
     UsersModule,
     CurrencyModule,
     PriceYearModule,
-    DescriptionModule,
     MediaModule,
     DiscountModule,
     OrderModule,

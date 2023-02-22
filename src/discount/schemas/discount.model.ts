@@ -11,7 +11,6 @@ import {
 import { Appliances } from 'src/appliances_characteristics/schemas/appliancesCharacteric.model';
 import { Category } from 'src/category/schema/category.model';
 import { Currency } from 'src/currency/schemas/currency.model';
-import { Description } from 'src/description/schemas/description.model';
 import { Media } from 'src/media/schemas/media.model';
 import { Notebook } from 'src/notebook_characteristics/schemas/notebook.model';
 import { Order } from 'src/order/schemas/order.model';
@@ -74,14 +73,10 @@ export class Discount extends Model<Discount> {
   @BelongsTo(() => priceYear)
   priceYear: priceYear;
 
-  @ForeignKey(() => Description)
   @Column({
-    type: DataType.INTEGER,
+    type: DataType.STRING,
   })
-  description_id: number;
-
-  @BelongsTo(() => Description)
-  description: Description;
+  description: string;
 
   @ForeignKey(() => Category)
   @Column({

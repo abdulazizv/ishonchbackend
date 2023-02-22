@@ -25,11 +25,12 @@ export class CreateProductDto {
   @IsNumber()
   readonly currency_id: number;
   @ApiProperty({ example: '21345', description: 'id of product_year_price' })
+  @IsOptional()
   @IsNumber()
   readonly product_year_price: number;
   @ApiProperty({ example: '1', description: 'id of description' })
-  @IsNumber()
-  readonly description_id: number;
+  @IsString()
+  readonly description: string;
   @ApiProperty({ example: '1', description: 'id of category' })
   @IsNumber()
   readonly category_id: number;
