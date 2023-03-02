@@ -59,7 +59,6 @@ export class CurrencyController {
   @ApiOperation({ summary: "Currency o'chirish" })
   @ApiResponse({ status: 202, type: Number })
   @ApiBearerAuth()
-  @UseGuards(adminGuard)
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.currencyService.remove(+id);

@@ -1,15 +1,18 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsNumber, IsString } from "class-validator";
+import { IsNumber, IsOptional, IsString } from "class-validator";
 import { IsNumeric } from "sequelize-typescript";
 
 export class CreateOrderDto {
     @ApiProperty({example:"1",description:'id of product'})
+    @IsOptional()
     @IsNumber()
     readonly product_id:number;
     @ApiProperty({example:'2',description:'id of discount'})
+    @IsOptional()
     @IsNumber()
     readonly discount_id:number;
     @ApiProperty({example:'1',description:'id of user'})
+    @IsOptional()
     @IsNumber()
     readonly user_id:number;
     @ApiProperty({example:'name1',description:'name of client'})

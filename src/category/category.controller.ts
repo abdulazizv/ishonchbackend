@@ -29,7 +29,6 @@ export class CategoryController {
   @ApiResponse({ status: 201, type: Category })
   @UseInterceptors(FileInterceptor('image'))
   @ApiBearerAuth()
-  @UseGuards(adminGuard)
   @Post()
   create(
     @Body() createCategoryDto: CreateCategoryDto,
@@ -41,7 +40,6 @@ export class CategoryController {
   @ApiOperation({ summary: 'Categorylarni olish' })
   @ApiResponse({ status: 200, type: [Category] })
   @ApiBearerAuth()
-  @UseGuards(userGuard)
   @Get()
   findAll() {
     return this.categoryService.findAll();
@@ -50,7 +48,6 @@ export class CategoryController {
   @ApiOperation({ summary: 'Categoryni olish' })
   @ApiResponse({ status: 200, type: Category })
   @ApiBearerAuth()
-  @UseGuards(userGuard)
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.categoryService.findOne(+id);
@@ -59,7 +56,6 @@ export class CategoryController {
   @ApiOperation({ summary: 'Category yangilash' })
   @ApiResponse({ status: 200, type: Category })
   @ApiBearerAuth()
-  @UseGuards(adminGuard)
   @Put(':id')
   update(
     @Param('id') id: string,

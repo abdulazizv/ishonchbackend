@@ -31,8 +31,7 @@ import { OtpModule } from './otp/otp.module';
 import { Otp } from './otp/schemas/otp.model';
 import { AdminModule } from './admin/admin.module';
 import { Admin } from './admin/models/admin.model';
-import { Module } from '@nestjs/common';
-
+import {Module} from '@nestjs/common'
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true, envFilePath: './.env' }),

@@ -33,7 +33,6 @@ export class AppliancesCharacteristicsController {
   @ApiResponse({ status: 201, type: Appliances })
   @ApiBearerAuth()
   @UseInterceptors(FileInterceptor('image'))
-  @UseGuards(adminGuard)
   @Post()
   create(
     @Body()
@@ -49,7 +48,6 @@ export class AppliancesCharacteristicsController {
   @ApiOperation({ summary: 'Appliances_charactericslarni olish' })
   @ApiResponse({ status: 200, type: [Appliances] })
   @ApiBearerAuth()
-  @UseGuards(userGuard)
   @Get()
   async findAll() {
     return this.appliancesCharacteristicsService.findAll();
@@ -58,7 +56,6 @@ export class AppliancesCharacteristicsController {
   @ApiOperation({ summary: 'Appliances_charactericsni olish' })
   @ApiResponse({ status: 200, type: Appliances })
   @ApiBearerAuth()
-  @UseGuards(userGuard)
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.appliancesCharacteristicsService.findOne(+id);
@@ -67,7 +64,6 @@ export class AppliancesCharacteristicsController {
   @ApiOperation({ summary: 'Appliances_characterics yangilash' })
   @ApiResponse({ status: 200, type: Appliances })
   @ApiBearerAuth()
-  @UseGuards(adminGuard)
   @Put(':id')
   update(
     @Param('id') id: string,

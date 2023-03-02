@@ -27,7 +27,6 @@ export class UsersController {
   @ApiOperation({ summary: "Userlarni qo'shish" })
   @ApiResponse({ status: 201, type: User })
   @ApiBearerAuth()
-  @UseGuards(userGuard)
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
@@ -69,7 +68,6 @@ export class UsersController {
   @ApiOperation({ summary: 'Userni yangilash' })
   @ApiResponse({ status: 200, type: User })
   @ApiBearerAuth()
-  @UseGuards(userParamGuard)
   @Put(':id')
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.usersService.update(+id, updateUserDto);
