@@ -13,11 +13,12 @@ import {
 import { PhoneCharacteristicsService } from './phone_characteristics.service';
 import { CreatePhoneCharacteristicDto } from './dto/create-phone_characteristic.dto';
 import { UpdatePhoneCharacteristicDto } from './dto/update-phone_characteristic.dto';
-import { ApiBearerAuth, ApiOperation, ApiResponse } from "@nestjs/swagger";
+import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { FileInterceptor } from '@nestjs/platform-express';
 import { Phone } from './schemas/phone.model';
 
 @Controller('api/v2/phone-characteristics')
+@ApiTags('Phone')
 export class PhoneCharacteristicsController {
   constructor(
     private readonly phoneCharacteristicsService: PhoneCharacteristicsService,

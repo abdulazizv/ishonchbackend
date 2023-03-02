@@ -9,7 +9,7 @@ import {
   Put,
   UseGuards,
 } from '@nestjs/common';
-import {ApiBearerAuth, ApiOperation, ApiResponse} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { adminGuard } from 'src/guards/admin.guard';
 import { DiscountService } from './discount.service';
 import { CreateDiscountDto } from './dto/create-discount.dto';
@@ -17,6 +17,7 @@ import { UpdateDiscountDto } from './dto/update-discount.dto';
 import { Discount } from './schemas/discount.model';
 
 @Controller('api/v2/discount')
+@ApiTags('Discount')
 export class DiscountController {
   constructor(private readonly discountService: DiscountService) {}
 

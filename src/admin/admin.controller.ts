@@ -10,12 +10,13 @@ import {
 import { AdminService } from './admin.service';
 import { CreateAdminDto } from './dto/create-admin.dto';
 import { UpdateAdminDto } from './dto/update-admin.dto';
-import { ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { Admin } from './models/admin.model';
 
 import { Tokens } from '../types/index';
-import { SignInDto } from "./dto/sign-in.dto";
+import { SignInDto } from './dto/sign-in.dto';
 @Controller('api/v2/admin')
+@ApiTags('Admin')
 export class AdminController {
   constructor(private readonly adminService: AdminService) {}
 

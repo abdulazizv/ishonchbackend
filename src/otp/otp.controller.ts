@@ -12,11 +12,12 @@ import { CreateOtpDto } from './dto/create-otp.dto';
 import { UpdateOtpDto } from './dto/update-otp.dto';
 import { VerifyOtpDto } from './dto/verifyotp.dto';
 import { newOtpDto } from './dto/newotp.dto';
-import { ApiBearerAuth, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { Otp } from './schemas/otp.model';
 import { Tokens } from '../types';
 
 @Controller('api/v2/otp')
+@ApiTags('Otp')
 export class OtpController {
   constructor(private readonly otpService: OtpService) {}
 

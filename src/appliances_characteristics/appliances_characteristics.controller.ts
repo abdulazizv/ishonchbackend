@@ -14,7 +14,7 @@ import {
   HttpStatus,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { ApiBearerAuth, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { adminGuard } from 'src/guards/admin.guard';
 import { userGuard } from 'src/guards/user.guard';
 import { AppliancesCharacteristicsService } from './appliances_characteristics.service';
@@ -23,6 +23,7 @@ import { UpdateAppliancesCharacteristicDto } from './dto/update-appliances_chara
 import { Appliances } from './schemas/appliancesCharacteric.model';
 
 @Controller('api/v2/appliances-characteristics')
+@ApiTags('Appliances')
 export class AppliancesCharacteristicsController {
   constructor(
     private readonly appliancesCharacteristicsService: AppliancesCharacteristicsService,

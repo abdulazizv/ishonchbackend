@@ -12,7 +12,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
-import {ApiBearerAuth, ApiOperation, ApiResponse} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { adminGuard } from 'src/guards/admin.guard';
 import { userGuard } from 'src/guards/user.guard';
 import { CategoryService } from './category.service';
@@ -21,6 +21,7 @@ import { UpdateCategoryDto } from './dto/update-category.dto';
 import { Category } from './schema/category.model';
 
 @Controller('api/v2/category')
+@ApiTags('Category')
 export class CategoryController {
   constructor(private readonly categoryService: CategoryService) {}
 

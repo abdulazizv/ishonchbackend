@@ -11,10 +11,11 @@ import {
 import { MediaService } from './media.service';
 import { CreateMediaDto } from './dto/create-media.dto';
 import { UpdateMediaDto } from './dto/update-media.dto';
-import {ApiBearerAuth, ApiOperation, ApiResponse} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { Media } from './schemas/media.model';
 
 @Controller('api/v2/media')
+@ApiTags('Media')
 export class MediaController {
   constructor(private readonly mediaService: MediaService) {}
 

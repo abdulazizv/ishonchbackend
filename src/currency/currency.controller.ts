@@ -9,7 +9,7 @@ import {
   Put,
   UseGuards,
 } from '@nestjs/common';
-import {ApiBearerAuth, ApiOperation, ApiResponse} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { adminGuard } from 'src/guards/admin.guard';
 import { CurrencyService } from './currency.service';
 import { CreateCurrencyDto } from './dto/create-currency.dto';
@@ -17,6 +17,7 @@ import { UpdateCurrencyDto } from './dto/update-currency.dto';
 import { Currency } from './schemas/currency.model';
 
 @Controller('api/v2/currency')
+@ApiTags('Currency')
 export class CurrencyController {
   constructor(private readonly currencyService: CurrencyService) {}
 

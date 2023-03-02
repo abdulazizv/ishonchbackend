@@ -14,12 +14,13 @@ import {
 import { NotebookCharacteristicsService } from './notebook_characteristics.service';
 import { CreateNotebookCharacteristicDto } from './dto/create-notebook_characteristic.dto';
 import { UpdateNotebookCharacteristicDto } from './dto/update-notebook_characteristic.dto';
-import {ApiBearerAuth, ApiOperation, ApiResponse} from '@nestjs/swagger';
+import {ApiBearerAuth, ApiOperation, ApiResponse, ApiTags} from '@nestjs/swagger';
 import { Notebook } from './schemas/notebook.model';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { adminGuard } from 'src/guards/admin.guard';
 
 @Controller('api/v2/notebook-characteristics')
+@ApiTags('Notebook')
 export class NotebookCharacteristicsController {
   constructor(
     private readonly notebookCharacteristicsService: NotebookCharacteristicsService,

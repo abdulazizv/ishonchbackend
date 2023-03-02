@@ -12,7 +12,7 @@ import {
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { ApiBearerAuth, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { User } from './schemas/user.model';
 import { userGuard } from 'src/guards/user.guard';
 import { adminGuard } from 'src/guards/admin.guard';
@@ -20,6 +20,7 @@ import { userParamGuard } from 'src/guards/userParam.guard';
 import { isCreatorOrAdminGuard } from 'src/guards/iscreatororadmin.guard';
 
 @Controller('api/v2/users')
+@ApiTags('Users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 

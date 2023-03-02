@@ -11,10 +11,11 @@ import {
 import { PriceYearService } from './price_year.service';
 import { CreatePriceYearDto } from './dto/create-price_year.dto';
 import { UpdatePriceYearDto } from './dto/update-price_year.dto';
-import { ApiBearerAuth, ApiOperation, ApiResponse } from "@nestjs/swagger";
+import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { priceYear } from './schemas/price_year.model';
 
 @Controller('api/v2/price-year')
+@ApiTags('priceYear')
 export class PriceYearController {
   constructor(private readonly priceYearService: PriceYearService) {}
 
