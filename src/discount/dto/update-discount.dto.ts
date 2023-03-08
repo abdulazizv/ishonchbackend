@@ -25,8 +25,8 @@ export class UpdateDiscountDto extends PartialType(CreateDiscountDto) {
     readonly product_price_year:number;
     @ApiProperty({example:'1',description:'description_id of discount_product'})
     @IsOptional()
-    @IsNumber({},{message:"description_id number bo'lishi kerak"})
-    readonly description_id:number;
+    @IsString({message:"description string bo'lishi kerak"})
+    readonly description:string;
     @ApiProperty({example:'1',description:'category_id of discount_product'})
     @IsOptional()
     @IsNumber({},{message:"category_id number bo'lishi kerak"})
@@ -57,11 +57,10 @@ export class UpdateDiscountDto extends PartialType(CreateDiscountDto) {
     readonly is_new:boolean;
     @ApiProperty({example:'2',description:'brand_id of discount_product'})
     @IsOptional()
-    @IsNumber({},{message:`brand_id number bo'lishi kerak`})
-    brand_id:number;
+    @IsString({message:`brand_name number bo'lishi kerak`})
+    brand_name:string;
     @ApiProperty({example:'1',description:'id of status_id'})
     @IsOptional()
-    @IsOptional()
-    @IsNumber({},{message:'status_id number typeni qabul qiladi'})
-    status_id:number
+    @IsString({message:'status string typeni qabul qiladi'})
+    status:string;
 }

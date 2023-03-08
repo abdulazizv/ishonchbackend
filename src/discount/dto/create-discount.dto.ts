@@ -19,8 +19,8 @@ export class CreateDiscountDto {
     @IsNumber({},{message:"Product_price_year number bo'lishi kerak"})
     readonly product_price_year:number;
     @ApiProperty({example:'1',description:'description_id of discount_product'})
-    @IsNumber({},{message:"description_id number bo'lishi kerak"})
-    readonly description_id:number;
+    @IsString({message:"description string bo'lishi kerak"})
+    readonly description:string;
     @ApiProperty({example:'1',description:'category_id of discount_product'})
     @IsNumber({},{message:"category_id number bo'lishi kerak"})
     readonly category_id:number;
@@ -46,13 +46,12 @@ export class CreateDiscountDto {
     @IsBoolean({message:'is_new faqat true yoki false qiymat qabul qiladi'})
     readonly is_new:boolean;
     @ApiProperty({example:'2',description:'brand_id of discount_product'})
-    @IsNumber({},{message:`brand_id number bo'lishi kerak`})
-    brand_id:number;
+    @IsString({message:`brand_name number bo'lishi kerak`})
+    brand_name:string;
     @ApiProperty({example:'1',description:'id of status_id'})
     @IsOptional()
-    @IsNumber({},{message:'status_id number typeni qabul qiladi'})
-    status_id:number
-
+    @IsString({message:'status string typeni qabul qiladi'})
+    status:string;
 }
 
 /*
@@ -69,3 +68,5 @@ export class CreateDiscountDto {
     @HasMany(() => Order)
     order:Order 
 */
+
+

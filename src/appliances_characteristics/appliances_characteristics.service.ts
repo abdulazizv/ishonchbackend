@@ -18,7 +18,9 @@ export class AppliancesCharacteristicsService {
     createAppliancesCharacteristicDto: CreateAppliancesCharacteristicDto,
     image: string,
   ) {
+    console.log(image);
     const fileName = await this.fileService.createFile(image);
+    console.log(fileName)
     const newAppliances = await this.appliancesRepository.create(
       createAppliancesCharacteristicDto,
       {

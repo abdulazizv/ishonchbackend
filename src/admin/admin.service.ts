@@ -8,6 +8,7 @@ import Token = AST.Token;
 import { Tokens } from '../types';
 import { getTokens } from '../helpers/getTokens.helper';
 import { SignInDto } from './dto/sign-in.dto';
+import { UnauthorizedException } from '@nestjs/common/exceptions';
 
 @Injectable()
 export class AdminService {
@@ -91,24 +92,33 @@ export class AdminService {
 
   async signup(createAdminDto: CreateAdminDto): Promise<Tokens> {
     try {
-      const { name, password } = createAdminDto;
     } catch (err) {
       throw new HttpException('Unwaited error', HttpStatus.BAD_GATEWAY);
     }
-    const newAdmin = await this.adminRepository.create(createAdminDto);
+    const newAdmin = await this.adminRepository.create({
+      name: createAdminDto.name,
+      password: createAdminDto.password
+    });
     const tokens = await getTokens(newAdmin.id, true, true, false);
     return tokens;
   }
 
   async signIn(signInDto: SignInDto) {
-    const { name } = signInDto;
+    const { name,password } = signInDto;
     const checkAdmin = await this.adminRepository.findOne({
       where: {
         name: name,
       },
     });
+    
     if (!checkAdmin) {
-      throw new HttpException('Name is not correct !', HttpStatus.NOT_FOUND);
+      throw new HttpException('Name is not correct !', HttpStatus.PARTIAL_CONTENT);
+    }
+    if(checkAdmin.password === password) {
+      throw new HttpException (
+        'Password or login is not correct',
+        HttpStatus.RESET_CONTENT
+      )
     }
     const newTokens = await getTokens(checkAdmin.id,true,true,false);
     return newTokens;
