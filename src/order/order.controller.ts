@@ -12,9 +12,15 @@ import {
 import { OrderService } from './order.service';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { UpdateOrderDto } from './dto/update-order.dto';
-import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
+import {
+  ApiBearerAuth,
+  ApiOperation,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 import { Order } from './schemas/order.model';
 import { adminGuard } from 'src/guards/admin.guard';
+import { orderSearchDto } from "./dto/orderSearch.dto";
 
 @Controller('api/v2/order')
 @ApiTags('Order')
@@ -44,6 +50,13 @@ export class OrderController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.orderService.findOne(+id);
+  }
+
+  @ApiOperation({ summary: 'Orderlarni deviceId orqali olish' })
+  @ApiResponse({ status: 200, type: Order })
+  @Post('device')
+  findByDeviceId(@Body() orderSearchDto: orderSearchDto): Promise<Order[]> {
+    return this.orderService.findByDeviceId(orderSearchDto);
   }
 
   @ApiOperation({ summary: 'Orderni update qilish' })

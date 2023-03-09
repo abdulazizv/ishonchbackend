@@ -87,15 +87,6 @@ export class Discount extends Model<Discount> {
   @BelongsTo(() => Category)
   category: Category;
 
-  @ForeignKey(() => Media)
-  @Column({
-    type: DataType.INTEGER,
-  })
-  media_id: number;
-
-  @BelongsTo(() => Media)
-  media: Media;
-
   @ForeignKey(() => Appliances)
   @Column({
     type: DataType.INTEGER,
@@ -136,12 +127,12 @@ export class Discount extends Model<Discount> {
   is_new: boolean;
 
   @Column({
-    type: DataType.INTEGER,
+    type: DataType.STRING,
   })
   brand_name: string;
 
   @Column({
-    type: DataType.INTEGER,
+    type: DataType.STRING,
   })
   status: string;
 

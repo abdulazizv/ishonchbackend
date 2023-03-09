@@ -6,10 +6,16 @@ import { Category } from './schema/category.model';
 import { JwtModule } from '@nestjs/jwt';
 import { FilesModule } from 'src/files/files.module';
 import { MediaModule } from 'src/media/media.module';
+import { Media } from '../media/schemas/media.model';
 
 @Module({
-  imports:[SequelizeModule.forFeature([Category]),JwtModule,FilesModule,MediaModule],
+  imports: [
+    SequelizeModule.forFeature([Category]),
+    JwtModule,
+    FilesModule,
+    MediaModule,
+  ],
   controllers: [CategoryController],
-  providers: [CategoryService]
+  providers: [CategoryService],
 })
 export class CategoryModule {}

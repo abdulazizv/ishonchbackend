@@ -10,8 +10,8 @@ async function start() {
     const config = new DocumentBuilder()
       .addBearerAuth()
       .setTitle('Ishonch571 market')
-      .setDescription('REST API and Others')
-      .setVersion('1.0.0')
+      .setDescription('REST api, methods and database hints')
+      .setVersion('2.0.0')
       .addTag('NodeJs,NestJs,Sequelize,Postgres')
       .build();
 
