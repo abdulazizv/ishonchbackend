@@ -44,11 +44,11 @@ import { Admin } from './admin/models/admin.model';
       inject: [ConfigService],
       useFactory: async (config: ConfigService) => ({
         dialect: 'postgres',
-        host: config.get<string>('POSTGRES_HOST'),
-        username: config.get<string>('POSTGRES_USER'),
-        password: config.get<string>('POSTGRES_PASSWORD'),
-        database: config.get<string>('POSTGRES_DB'),
-        port: config.get<number>('POSTGRES_PORT'),
+        host: 'localhost',
+        username: 'postgres',
+        password: 'seniordev',
+        database: 'ishonch',
+        port: 5432,
         models: [
           Category,
           Product,
