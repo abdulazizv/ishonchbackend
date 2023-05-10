@@ -46,8 +46,8 @@ import { Admin } from './admin/models/admin.model';
         dialect: 'postgres',
         host: 'localhost',
         username: 'postgres',
-        password: 'seniordev',
-        database: 'ishonch',
+        password: 'checkhack__01',
+        database: 'ishonchmarket',
         port: 5432,
         models: [
           Category,

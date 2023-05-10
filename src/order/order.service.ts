@@ -46,6 +46,7 @@ export class OrderService {
 
   async findByDeviceId(orderSearchDto: orderSearchDto): Promise<Order[]> {
     const { deviceId } = orderSearchDto;
+    console.log(deviceId)
     const response = await this.orderRepository.findAll({
       where: {
         device_id: deviceId,

@@ -114,6 +114,14 @@ export class Discount extends Model<Discount> {
   @BelongsTo(() => Phone)
   phone: Phone;
 
+  @ForeignKey(() => Media)
+  @Column({
+    type: DataType.INTEGER
+  })
+  media_id: number;
+
+  @BelongsTo(() => Media)
+  media:Media;
   @ApiProperty({ example: 'true', description: 'Is Delivery true or false' })
   @Column({
     type: DataType.BOOLEAN,

@@ -38,7 +38,6 @@ export class OrderController {
   @ApiOperation({ summary: 'Orderlarni olish' })
   @ApiResponse({ status: 200, type: [Order] })
   @ApiBearerAuth()
-  @UseGuards(adminGuard)
   @Get()
   findAll() {
     return this.orderService.findAll();
@@ -56,6 +55,7 @@ export class OrderController {
   @ApiResponse({ status: 200, type: Order })
   @Post('device')
   findByDeviceId(@Body() orderSearchDto: orderSearchDto): Promise<Order[]> {
+    console.log(orderSearchDto);
     return this.orderService.findByDeviceId(orderSearchDto);
   }
 
